@@ -1,0 +1,17 @@
+scores<-read.csv2("/Users/raphaelalbino/Dropbox/doutorado/EAD5917/exercicio 1/Escores.csv")
+table(scores$Graduacao)
+anos_graduacao<-table(scores$Graduacao,scores$Anos_de_Experiencia)
+barplot(anos_graduacao, main="Graduados por ano de experiencia",
+        xlab="Numero de funcionarios", col=c("red","darkblue"),
+        legend = rownames(anos_graduacao),beside=TRUE)
+summary(scores$Anos_de_Experiencia)
+boxplot(scores$Anos_de_Experiencia)
+hist(scores$Anos_de_Experiencia, ylab="Frequencia",main="Histograma de anos de experi??ncia", xlab="Anos de experi??ncia")
+summary(scores$Escore_teste)
+boxplot(scores$Escore_teste)
+hist(scores$Escore_teste, ylab="Frequencia",main="Histograma de escore", xlab="Escore")
+summary(scores$Salario)
+boxplot(scores$Salario)
+hist(scores$Salario,  ylab="Frequencia",main="Histograma de salario", xlab="Salario")
+cor(scores[-3])
+cor(scores[-3], method="spearman")
