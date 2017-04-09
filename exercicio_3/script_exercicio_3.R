@@ -112,6 +112,9 @@ education_pls_3$unidim
 # avaliando a carga e comunalidade de cada indicador
 education_pls_3$outer_model
 
+# avaliando a carga cruzada
+education_pls_3$crossloadings
+
 # modelo final com as cargas
 plot(education_pls_3, arr.pos = 0.35)
 
