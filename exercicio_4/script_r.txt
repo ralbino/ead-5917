@@ -1,0 +1,38 @@
+data_customer_satisfaction <- read.csv2("mobi250.csv",sep=";")
+
+colnames(model_path) = rownames(model_path)
+
+Image <- c(0,0,0,0,0,0,0)
+
+Expectation <- c(1,0,0,0,0,0,0)
+
+Quality <- c(0,1,0,0,0,0,0)
+
+Value <- c(0,1,1,0,0,0,0)
+
+Satisfaction <- c(0,1,1,0,1,0,0)
+
+Complaints <- c(0,0,0,0,0,1,0)
+
+Loyalty <- c(1,0,0,0,0,1,1)
+
+model_path = rbind(Image,Expectation, Quality, Value, Satisfaction,Complaints,Loyalty)
+
+innerplot(model_path,box.size = 0.1)
+
+model_blocks =list(1:5,6:8,9:15,16:17,18:20,21,22:24)
+
+model_modes = rep("A", 7)
+
+satisfaction_pls = plspm(data_customer_satisfaction, model_path, model_blocks, modes = model_modes,boot.val=TRUE,br=2000)
+
+satisfaction_pls$boot
+
+satisfaction_pls$outer_model
+
+satisfaction_pls$inner_summary
+
+satisfaction_pls$crossloadings
+
+cor(satisfaction_pls$scores)
+
